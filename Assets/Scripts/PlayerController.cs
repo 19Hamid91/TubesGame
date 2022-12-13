@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 	    bool isDead = false;
 	    int idMove = 0;
 	    Animator anim;
+		public float cooldown;
+		public float timer;
 
 		// public GameObject Projectile; // object peluru
 		// public Vector2 projectileVelocity; // kecepatan peluru
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
 	        anim = GetComponent<Animator>();
 			// isCanShoot = false;
 			// EnemyController.EnemyKilled = 0;
+			cooldown = 1;
+			timer = cooldown;
 	    }
 	    
 	    // Update is called once per frame
@@ -49,10 +53,21 @@ public class PlayerController : MonoBehaviour
 	        {
 	            Idle();
 	        }
-			// if (Input.GetKeyDown(KeyCode.Z))
-			// {
-			// 	Fire();
-			// }
+
+			timer -= Time.deltaTime;
+			// Debug.Log(timer);
+			if(timer < 0 ) 
+			{
+				if (Input.GetKeyDown(KeyCode.Z))
+				{
+					Attack();
+					timer = cooldown;
+				}
+			}
+			if (Input.GetKeyUp(KeyCode.Z))
+			{
+				Idle();
+			}
 	        Move();
 	        // Dead();
 	    }
@@ -75,6 +90,7 @@ public class PlayerController : MonoBehaviour
 	        anim.SetTrigger("Jump");
 	        anim.ResetTrigger("Run");
 	        anim.ResetTrigger("Idle");
+	        anim.ResetTrigger("Hurt");
 	        isJump = true;
 	    }
 
@@ -87,18 +103,22 @@ public class PlayerController : MonoBehaviour
 	    //     }
 	    // }
 
-		// private void OnCollisionEnter2D(Collision2D collision)
-		// {
-		// 	if (collision.transform.tag.Equals("Peluru"))
-		// 	{
-		// 		isCanShoot = true;
-		// 	}
-		// 	if (collision.transform.tag.Equals("Enemy"))
-		// 	{
-		// 		SceneManager.LoadScene("Game Over");
-		// 		isDead = true;
-		// 	}
-		// }
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			if (collision.transform.tag.Equals("Traps"))
+			{
+				anim.SetTrigger("Hurt");
+			}
+			// if (collision.transform.tag.Equals("Peluru"))
+			// {
+			// 	isCanShoot = true;
+			// }
+			// if (collision.transform.tag.Equals("Enemy"))
+			// {
+			// 	SceneManager.LoadScene("Game Over");
+			// 	isDead = true;
+			// }
+		}
  
 	    public void MoveRight()
 	    {
@@ -145,10 +165,16 @@ public class PlayerController : MonoBehaviour
 	        {
 	            anim.ResetTrigger("Jump");
 	            anim.ResetTrigger("Run");
+	            anim.ResetTrigger("Attack");
 	            anim.SetTrigger("Idle");
 	        }
 	        idMove = 0;
 	    }
+
+		public void Attack()
+		{
+			anim.SetTrigger("Attack");
+		}
 	    
 	    // private void Dead()
 	    // {
