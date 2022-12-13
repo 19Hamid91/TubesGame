@@ -33,11 +33,11 @@ public class PlayerController : MonoBehaviour
 	    void Update()
 	    {
 	        //Debug.Log("Jump "+isJump);
-	        if (Input.GetKeyDown(KeyCode.LeftArrow))
+	        if (Input.GetKeyDown(KeyCode.A))
 	        {
 	            MoveLeft();
 	        }
-	        if (Input.GetKeyDown(KeyCode.RightArrow))
+	        if (Input.GetKeyDown(KeyCode.D))
 	        {
 	            MoveRight();
 	        }
@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour
 	        {
 	            Jump();
 	        }
-	        if (Input.GetKeyUp(KeyCode.RightArrow))
+	        if (Input.GetKeyUp(KeyCode.D))
 	        {
 	            Idle();
 	        }
-	        if (Input.GetKeyUp(KeyCode.LeftArrow))
+	        if (Input.GetKeyUp(KeyCode.A))
 	        {
 	            Idle();
 	        }
@@ -58,13 +58,13 @@ public class PlayerController : MonoBehaviour
 			// Debug.Log(timer);
 			if(timer < 0 ) 
 			{
-				if (Input.GetKeyDown(KeyCode.Z))
+				if (Input.GetMouseButtonDown(0))
 				{
 					Attack();
 					timer = cooldown;
 				}
 			}
-			if (Input.GetKeyUp(KeyCode.Z))
+			if (Input.GetMouseButtonUp(0))
 			{
 				Idle();
 			}
