@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 1055566867}
   - component: {fileID: 1055566866}
   m_Layer: 0
-  m_Name: 1670926611257
+  m_Name: bg_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
