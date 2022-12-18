@@ -906,6 +906,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2091028676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 737665827916382843, guid: f477cdfbf714453499d5f89fd4533e40, type: 3}
+  m_PrefabInstance: {fileID: 1166779667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140756015
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +924,8 @@ GameObject:
   - component: {fileID: 2140756016}
   - component: {fileID: 2140756019}
   - component: {fileID: 2140756020}
-  m_Layer: 0
+  - component: {fileID: 2140756021}
+  m_Layer: 6
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -1024,8 +1030,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 100
+  m_UseAutoMass: 1
+  m_Mass: 6.8882723
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1047,7 +1053,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.35}
+  m_Offset: {x: 0, y: -0.41}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1058,5 +1064,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.78, y: 0.92}
+  m_Size: {x: 0.53, y: 0.79}
   m_EdgeRadius: 0
+--- !u!114 &2140756021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140756015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8d39d4225c0264487c2809cfc8c2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2140756016}
+  player: {fileID: 2091028676}
+  isFlipped: 0
+  maxHealth: 100
