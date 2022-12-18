@@ -54,20 +54,20 @@ public class PlayerController : MonoBehaviour
 	            Idle();
 	        }
 
-			timer -= Time.deltaTime;
-			// Debug.Log(timer);
-			if(timer < 0 ) 
-			{
-				if (Input.GetMouseButtonDown(0))
-				{
-					Attack();
-					timer = cooldown;
-				}
-			}
-			if (Input.GetMouseButtonUp(0))
-			{
-				Idle();
-			}
+			// timer -= Time.deltaTime;
+			// // Debug.Log(timer);
+			// if(timer < 0 ) 
+			// {
+			// 	if (Input.GetMouseButtonDown(0))
+			// 	{
+			// 		Attack();
+			// 		timer = cooldown;
+			// 	}
+			// }
+			// if (Input.GetMouseButtonUp(0))
+			// {
+			// 	Idle();
+			// }
 	        Move();
 	        // Dead();
 	    }
@@ -109,15 +109,6 @@ public class PlayerController : MonoBehaviour
 			{
 				anim.SetTrigger("Hurt");
 			}
-			// if (collision.transform.tag.Equals("Peluru"))
-			// {
-			// 	isCanShoot = true;
-			// }
-			// if (collision.transform.tag.Equals("Enemy"))
-			// {
-			// 	SceneManager.LoadScene("Game Over");
-			// 	isDead = true;
-			// }
 		}
  
 	    public void MoveRight()
@@ -165,16 +156,15 @@ public class PlayerController : MonoBehaviour
 	        {
 	            anim.ResetTrigger("Jump");
 	            anim.ResetTrigger("Run");
-	            anim.ResetTrigger("Attack");
 	            anim.SetTrigger("Idle");
 	        }
 	        idMove = 0;
 	    }
 
-		public void Attack()
-		{
-			anim.SetTrigger("Attack");
-		}
+		// public void Attack()
+		// {
+		// 	anim.SetTrigger("Attack");
+		// }
 	    
 	    // private void Dead()
 	    // {
