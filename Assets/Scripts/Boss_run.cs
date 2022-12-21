@@ -23,8 +23,8 @@ public class Boss_run : StateMachineBehaviour
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		// if(!boss.isDead)
-		// {
+		if(!animator.GetBool("isDead"))
+		{
 			boss.LookAtPlayer();
 
 			Vector2 target = new Vector2(player.position.x, rb.position.y);
@@ -35,7 +35,8 @@ public class Boss_run : StateMachineBehaviour
 			{
 				animator.SetTrigger("Boss_Attack");
 			}
-		// }
+		}
+		return;
 	
 		// boss.TakeDamage(40);
 	}
