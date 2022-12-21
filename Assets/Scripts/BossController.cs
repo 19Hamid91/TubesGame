@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour
     public Transform player;
 
 	public bool isFlipped = false;
-    public int maxHealth = 100;
+    public int maxHealth = 500;
     int currentHealth;
 
 	public void LookAtPlayer()
@@ -53,6 +53,8 @@ public class BossController : MonoBehaviour
         anim.SetBool("isDead", true);
 
         // GetComponent<Collider2D>().enabled = false;
+        // GetComponent<Boss_run>().enabled = false;
+        Destroy (this.gameObject, 2f);
         this.enabled = false;
 
     }
