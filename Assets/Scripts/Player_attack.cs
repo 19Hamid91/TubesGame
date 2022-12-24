@@ -11,13 +11,27 @@ public class Player_attack : MonoBehaviour
 
     public float attackRange = 0.5f;
     public int attackDamage = 40;
+
+    public float cooldown;
+	public float timer;
     // Update is called once per frame
+
+    private void Start()
+    {
+        cooldown = 1;
+		timer = cooldown;
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-			{
-		 		Attack();
-		 	}
+        timer -= Time.deltaTime;
+		if(timer < 0 ) 
+        {
+            if (Input.GetMouseButtonDown(0))
+                {
+                    Attack();
+                    timer = cooldown;
+                }
+        }
     }
 
     void Attack()
@@ -28,6 +42,10 @@ public class Player_attack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            if(enemy.GetComponent<BossController>().isInvulnerable)
+            {
+                return;
+            }
             enemy.GetComponent<BossController>().TakeDamage(attackDamage);
         }
     }

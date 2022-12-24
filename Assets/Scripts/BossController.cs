@@ -9,7 +9,11 @@ public class BossController : MonoBehaviour
 
 	public bool isFlipped = false;
     public int maxHealth = 500;
-    int currentHealth;
+    public int currentHealth;
+
+    public HealthBar healthbar;
+
+    public bool isInvulnerable = false;
 
 	public void LookAtPlayer()
 	{
@@ -34,11 +38,13 @@ public class BossController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthbar.setHealth(currentHealth);
         anim.SetTrigger("Boss_Hurt");
 
         if(currentHealth <= 0)
@@ -49,11 +55,10 @@ public class BossController : MonoBehaviour
 
     void Die()
     {
+        isInvulnerable = true;
         Debug.Log("Enemy Die");
         anim.SetBool("isDead", true);
 
-        // GetComponent<Collider2D>().enabled = false;
-        // GetComponent<Boss_run>().enabled = false;
         Destroy (this.gameObject, 2f);
         this.enabled = false;
 
