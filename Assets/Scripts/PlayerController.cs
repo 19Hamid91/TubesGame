@@ -6,33 +6,32 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     	bool isJump = true;
-	    bool isDead = false;
+	    public bool isDead = false;
 	    int idMove = 0;
 	    Animator anim;
+
 		public float cooldown;
 		public float timer;
 
-		// public GameObject Projectile; // object peluru
-		// public Vector2 projectileVelocity; // kecepatan peluru
-		// public Vector2 projectileOffset; // jarak posisi peluru dari posisi player
-		// public float cooldown = 1f; // jeda waktu untuk menembak
-		// bool isCanShoot = true; //  memastikan untuk kapan dapat menembak
-
+		public int maxHealth = 100;
+    	public int currentHealth;
+		public bool isInvulnerable = false;
+		public HealthBar healthbar;
 	    
 	    // Use this for initialization
 	    private void Start()
 	    {
 	        anim = GetComponent<Animator>();
-			// isCanShoot = false;
-			// EnemyController.EnemyKilled = 0;
 			cooldown = 1;
 			timer = cooldown;
+
+			currentHealth = maxHealth;
+        	healthbar.SetMaxHealth(maxHealth);
 	    }
 	    
 	    // Update is called once per frame
 	    void Update()
 	    {
-	        //Debug.Log("Jump "+isJump);
 	        if (Input.GetKeyDown(KeyCode.A))
 	        {
 	            MoveLeft();
@@ -53,23 +52,7 @@ public class PlayerController : MonoBehaviour
 	        {
 	            Idle();
 	        }
-
-			// timer -= Time.deltaTime;
-			// // Debug.Log(timer);
-			// if(timer < 0 ) 
-			// {
-			// 	if (Input.GetMouseButtonDown(0))
-			// 	{
-			// 		Attack();
-			// 		timer = cooldown;
-			// 	}
-			// }
-			// if (Input.GetMouseButtonUp(0))
-			// {
-			// 	Idle();
-			// }
 	        Move();
-	        // Dead();
 	    }
 	    
 	    private void OnCollisionStay2D(Collision2D collision)
@@ -93,15 +76,6 @@ public class PlayerController : MonoBehaviour
 	        anim.ResetTrigger("Hurt");
 	        isJump = true;
 	    }
-
-	    // private void OnTriggerEnter2D(Collider2D collision)
-	    // {
-	    //     if (collision.transform.tag.Equals("Coin"))
-	    //     {
-	    //         Data.score += 15;
-	    //         Destroy(collision.gameObject);
-	    //     }
-	    // }
 
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
@@ -161,50 +135,27 @@ public class PlayerController : MonoBehaviour
 	        idMove = 0;
 	    }
 
-		// public void Attack()
-		// {
-		// 	anim.SetTrigger("Attack");
-		// }
-	    
-	    // private void Dead()
-	    // {
-	    //     if (!isDead)
-	    //     {
-	    //         if (transform.position.y < -10f)
-	    //         {
-	    //             // kondisi ketika jatuh
-		// 			SceneManager.LoadScene("Game Over");
-	    //             isDead = true;
-	    //         }
-	    //     }
-	    // }
+		public void TakeDamage(int damage)
+		{
+			currentHealth -= damage;
+			healthbar.setHealth(currentHealth);
+			anim.SetTrigger("Hurt");
 
-		// void Fire()
-		// {
-		// 	// jika karakter dapat menembak
-		// 	if (isCanShoot)
-		// 	{
-		// 		//Membuat projectile baru
-		// 		GameObject bullet = Instantiate(Projectile, (Vector2)transform.position - projectileOffset * transform.localScale.x, Quaternion.identity);
-		
-		// 		// mengatur kecepatan dari projectile
-		// 		Vector2 velocity = new Vector2(projectileVelocity.x * transform.localScale.x, projectileVelocity.y);
-		// 		bullet.GetComponent<Rigidbody2D>().velocity = velocity * -1;
-		
-		// 		//Menyesuaikan scale dari projectile dengan scale karakter
-		// 		Vector3 scale = transform.localScale;
-		// 		bullet.transform.localScale = scale * -1;
-		
-		// 		StartCoroutine(CanShoot());
-		// 		anim.SetTrigger("shoot");
-		// 	}
-		// }
-		
-		// IEnumerator CanShoot()
-		// {
-		// 	anim.SetTrigger("shoot");
-		// 	isCanShoot = false;
-		// 	yield return new WaitForSeconds(cooldown);
-		// 	isCanShoot = true;       
-		// }
+			if(currentHealth <= 0)
+			{
+				Die();
+			}
+		}
+
+		void Die()
+		{
+			isInvulnerable = true;
+			Debug.Log("Player Die");
+			anim.SetBool("isDead", true);
+			Destroy (GetComponent<Rigidbody2D>());
+        	GetComponent<BoxCollider2D>().offset = new Vector2(0, -5);
+			GetComponent<Player_attack>().enabled = false;
+			this.enabled = false;
+
+		}
 }

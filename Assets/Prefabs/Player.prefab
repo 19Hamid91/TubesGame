@@ -155,6 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 2
   timer: 2
+  maxHealth: 100
+  currentHealth: 0
+  isInvulnerable: 0
+  healthbar: {fileID: 0}
 --- !u!50 &429571506
 Rigidbody2D:
   serializedVersion: 4
@@ -216,7 +220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 737665827916382837}
   attackPoint: {fileID: 459532987}
-  attackRange: 0.97
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackRange: 0.97
+  attackDamage: 400
+  cooldown: 0
+  timer: 0

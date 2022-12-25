@@ -58,32 +58,9 @@ public class BossController : MonoBehaviour
         isInvulnerable = true;
         Debug.Log("Enemy Die");
         anim.SetBool("isDead", true);
-
-        Destroy (this.gameObject, 2f);
+        Destroy (GetComponent<Rigidbody2D>());
+        GetComponent<BoxCollider2D>().enabled = false ;
         this.enabled = false;
 
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
-
-    // private void OnCollisionStay2D(Collision2D collision)
-	// {
-	//         // Kondisi ketika menyentuh tanah
-    //         // anim.SetTrigger("Boss_Idle");
-	// }
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-	// {
-	// 	// if (Input.GetKeyDown(KeyCode.N))
-	// 	// if (collision.collider.gameObject.CompareTag("Player"))
-	// 	// {
-    //     //     Debug.Log("Damage");
-	// 	// 	anim.SetTrigger("Boss_Hurt");
-	// 	// }
-
-	// }
 }
