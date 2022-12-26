@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a120a03bfd7153e439b84dc8995fb6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   cooldown: 2
   timer: 2
   maxHealth: 100

@@ -50,13 +50,13 @@ public class BossController : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
+            Data.score += 100;
         }
     }
 
     void Die()
     {
         isInvulnerable = true;
-        Debug.Log("Enemy Die");
         anim.SetBool("isDead", true);
         Destroy (GetComponent<Rigidbody2D>());
         GetComponent<BoxCollider2D>().enabled = false ;

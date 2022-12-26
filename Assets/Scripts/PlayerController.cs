@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
 	            Idle();
 	        }
 	        Move();
+			if(currentHealth <= 0)
+			{
+				Die();
+			}
 	    }
 	    
 	    private void OnCollisionStay2D(Collision2D collision)
@@ -81,7 +85,19 @@ public class PlayerController : MonoBehaviour
 		{
 			if (collision.transform.tag.Equals("Traps"))
 			{
+				currentHealth -= 5;
+				healthbar.setHealth(currentHealth);
 				anim.SetTrigger("Hurt");
+			}
+			if (collision.transform.tag.Equals("Gem"))
+			{
+				Destroy(collision.gameObject);
+				Data.score += 10;
+				Data.gem += 1;
+			}
+			if (collision.transform.tag.Equals("Fall"))
+			{
+				Die();
 			}
 		}
  
@@ -118,7 +134,7 @@ public class PlayerController : MonoBehaviour
 	        if (!isJump)
 	        {
 	            // Kondisi ketika Loncat           
-	            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300f);
+	            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 400f);
 	        }
 	    }
 	    
@@ -140,22 +156,16 @@ public class PlayerController : MonoBehaviour
 			currentHealth -= damage;
 			healthbar.setHealth(currentHealth);
 			anim.SetTrigger("Hurt");
-
-			if(currentHealth <= 0)
-			{
-				Die();
-			}
 		}
 
 		void Die()
 		{
 			isInvulnerable = true;
-			Debug.Log("Player Die");
 			anim.SetBool("isDead", true);
 			Destroy (GetComponent<Rigidbody2D>());
         	GetComponent<BoxCollider2D>().offset = new Vector2(0, -5);
 			GetComponent<Player_attack>().enabled = false;
 			this.enabled = false;
-
+			Debug.Log("Player Die");
 		}
 }
