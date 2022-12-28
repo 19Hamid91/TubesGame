@@ -8,6 +8,7 @@ TagManager:
   - Boss
   - Gem
   - Fall
+  - Gate
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Enemy
   - Player
   - Gem
-  - 
+  - Gate
   - 
   - 
   - 

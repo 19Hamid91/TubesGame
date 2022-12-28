@@ -836,33 +836,36 @@ PolygonCollider2D:
       - {x: -1.11, y: -0.26999998}
       - {x: -1.06, y: -0.29}
       - {x: -1, y: -0.26}
-      - {x: -0.95, y: -0.31}
-      - {x: -0.84, y: -0.28}
-      - {x: -0.78, y: -0.24}
-      - {x: -0.75, y: -0.12}
-      - {x: -0.66999996, y: -0.089999996}
-      - {x: -0.59999996, y: -0.08}
-      - {x: -0.58, y: -0.12}
-      - {x: -0.56, y: -0.12}
-      - {x: -0.45999998, y: -0.08}
-      - {x: -0.44, y: 0.04}
-      - {x: -0.42999998, y: 0.01}
-      - {x: -0.34, y: 0.01}
-      - {x: -0.28, y: 0.02}
-      - {x: -0.17, y: 0.03}
-      - {x: -0.13, y: 0.049999997}
-      - {x: -0.14, y: 0.19}
-      - {x: 0, y: 0.17999999}
-      - {x: 0.099999994, y: 0.17999999}
-      - {x: 0.16, y: 0.19999999}
-      - {x: 0.21, y: 0.19}
-      - {x: 0.31, y: 0.19}
-      - {x: 0.37, y: 0.17999999}
-      - {x: 0.47, y: 0.19999999}
-      - {x: 0.45, y: 0.12}
-      - {x: 0.44, y: 0.049999997}
-      - {x: 0.47, y: -0.16}
-      - {x: 0.45, y: -0.22}
+      - {x: -0.94697875, y: -0.2677465}
+      - {x: -0.8430212, y: -0.25585514}
+      - {x: -0.81018186, y: -0.23396379}
+      - {x: -0.804979, y: -0.15758419}
+      - {x: -0.79829097, y: -0.107927576}
+      - {x: -0.74053806, y: -0.07269407}
+      - {x: -0.66396356, y: -0.06585515}
+      - {x: -0.60905147, y: -0.05887326}
+      - {x: -0.5860363, y: -0.06869223}
+      - {x: -0.50868773, y: -0.0777465}
+      - {x: -0.508291, y: -0.049818926}
+      - {x: -0.4949204, y: 0.0508201}
+      - {x: -0.4490515, y: 0.052072417}
+      - {x: -0.39679685, y: 0.052253492}
+      - {x: -0.34, y: 0.04923535}
+      - {x: -0.27698487, y: 0.056217257}
+      - {x: -0.19716674, y: 0.05112674}
+      - {x: -0.1752698, y: 0.06509055}
+      - {x: -0.18225464, y: 0.19}
+      - {x: -0.18712157, y: 0.25545263}
+      - {x: -0.12333983, y: 0.26450697}
+      - {x: -0.009012446, y: 0.257344}
+      - {x: 0.11039673, y: 0.26847073}
+      - {x: 0.261709, y: 0.26243454}
+      - {x: 0.4243274, y: 0.26148883}
+      - {x: 0.51526976, y: 0.2482897}
+      - {x: 0.49526975, y: 0.1350905}
+      - {x: 0.49432737, y: 0.049999997}
+      - {x: 0.4881091, y: -0.1660362}
+      - {x: 0.48018187, y: -0.2682897}
       - {x: 0.45999998, y: -0.55}
       - {x: 0.48, y: -0.58}
       - {x: 1.12, y: -0.58}
@@ -6751,10 +6754,6 @@ PrefabInstance:
     - target: {fileID: 737665827916382836, guid: f477cdfbf714453499d5f89fd4533e40, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 737665827916382842, guid: f477cdfbf714453499d5f89fd4533e40, type: 3}
-      propertyPath: m_SortingOrder
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737665827916382843, guid: f477cdfbf714453499d5f89fd4533e40, type: 3}
       propertyPath: m_RootOrder
@@ -24254,31 +24253,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 5849388415299367017, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 5849388415299367015}
+    - target: {fileID: 5849388415299367017, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+      propertyPath: range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849388415299367017, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 814991795}
+    - target: {fileID: 5849388415299367017, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
---- !u!1 &5849388415299367015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5849388414828768140, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
-  m_PrefabInstance: {fileID: 5849388415299367014}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5849388415299367016 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5849388414828768141, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
-  m_PrefabInstance: {fileID: 5849388415299367014}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5849388415299367017
+--- !u!114 &5849388415299367015 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7861570961641491882, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+  m_PrefabInstance: {fileID: 5849388415299367014}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849388415299367015}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee2ec27294aaf042ad7b2579ad9da90, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 5849388415299367016}
 --- !u!1001 &6306815787512120157
 PrefabInstance:
   m_ObjectHideFlags: 0
