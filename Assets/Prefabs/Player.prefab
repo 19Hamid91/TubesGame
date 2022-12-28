@@ -160,6 +160,7 @@ MonoBehaviour:
   currentHealth: 0
   isInvulnerable: 0
   healthbar: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 7608a883a8bb5584986743a3ae5329cd, type: 3}
 --- !u!50 &429571506
 Rigidbody2D:
   serializedVersion: 4

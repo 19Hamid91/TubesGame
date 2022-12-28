@@ -10,12 +10,23 @@ public class Next_Level : MonoBehaviour
     public Transform target;
     public float range;
     public Text text;
+    string scene;
+    int minimum;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("isOpen", false);
         text.enabled = false;
+        scene = SceneManager.GetActiveScene().name;
+        if(scene == "Level1")
+        {
+            minimum = Data.min_gem_1;
+        }
+        if(scene == "Level2")
+        {
+            minimum = Data.min_gem_2;
+        }
     }
 
     // Update is called once per frame
@@ -23,11 +34,14 @@ public class Next_Level : MonoBehaviour
     {
         if ( Vector3.Distance(transform.position, target.position) < range )
         {
-            text.enabled = true;
-            if (Input.GetKeyDown(KeyCode.N))
+            if(Data.gem >= minimum)
             {
-                NextLevel();
-            } 
+                text.enabled = true;
+                if (Input.GetKeyDown(KeyCode.N))
+                {
+                    NextLevel();
+                }   
+            }
         }
         else
         {

@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   attackRange: 5
-  attackDamage: 100
+  attackDamage: 10
   cooldown: 0
   timer: 0
 --- !u!1101 &-159546879100203558

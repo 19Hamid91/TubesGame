@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     	public int currentHealth;
 		public bool isInvulnerable = false;
 		public HealthBar healthbar;
+
+		public AudioClip soundEffect;
+		private AudioSource sound;
 	    
 	    // Use this for initialization
 	    private void Start()
@@ -27,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
 			currentHealth = maxHealth;
         	healthbar.SetMaxHealth(maxHealth);
+
+			sound = gameObject.AddComponent<AudioSource>();
+        	sound.clip = soundEffect;
 	    }
 	    
 	    // Update is called once per frame
@@ -91,6 +97,7 @@ public class PlayerController : MonoBehaviour
 			}
 			if (collision.transform.tag.Equals("Gem"))
 			{
+				sound.Play();
 				Destroy(collision.gameObject);
 				Data.score += 10;
 				Data.gem += 1;

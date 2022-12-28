@@ -6,7 +6,7 @@ public class Boss_run : StateMachineBehaviour
 {
     public float speed = 2.5f;
 	public float attackRange = 3f;
-	public int attackDamage = 90;
+	public int attackDamage = 10;
 
 	public float cooldown;
 	public float timer;
