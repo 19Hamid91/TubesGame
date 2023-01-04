@@ -6,6 +6,10 @@ public class Boss_run : StateMachineBehaviour
 {
     public float speed = 2.5f;
 	public float attackRange = 3f;
+	public int attackDamage = 10;
+
+	public float cooldown;
+	public float timer;
 
 	Transform player;
 	Rigidbody2D rb;
@@ -17,6 +21,8 @@ public class Boss_run : StateMachineBehaviour
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		rb = animator.GetComponent<Rigidbody2D>();
 		boss = animator.GetComponent<BossController>();
+		cooldown = 1;
+		timer = cooldown;
 
 	}
 
@@ -25,6 +31,10 @@ public class Boss_run : StateMachineBehaviour
 	{
 		if(!animator.GetBool("isDead"))
 		{
+			if(player.GetComponent<PlayerController>().isInvulnerable)
+			{
+				return;
+			}
 			boss.LookAtPlayer();
 
 			Vector2 target = new Vector2(player.position.x, rb.position.y);
@@ -33,7 +43,17 @@ public class Boss_run : StateMachineBehaviour
 
 			if (Vector2.Distance(player.position, rb.position) <= attackRange)
 			{
-				animator.SetTrigger("Boss_Attack");
+				if(player.GetComponent<PlayerController>().isInvulnerable)
+				{
+					return;
+				}
+				timer -= Time.deltaTime;
+				if(timer < 0 ) 
+				{
+					animator.SetTrigger("Boss_Attack");
+					player.GetComponent<PlayerController>().TakeDamage(attackDamage);
+					timer = cooldown;
+				}
 			}
 		}
 		return;

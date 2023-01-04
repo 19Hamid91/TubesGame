@@ -9,7 +9,11 @@ public class BossController : MonoBehaviour
 
 	public bool isFlipped = false;
     public int maxHealth = 500;
-    int currentHealth;
+    public int currentHealth;
+
+    public HealthBar healthbar;
+
+    public bool isInvulnerable = false;
 
 	public void LookAtPlayer()
 	{
@@ -34,51 +38,29 @@ public class BossController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthbar.setHealth(currentHealth);
         anim.SetTrigger("Boss_Hurt");
 
         if(currentHealth <= 0)
         {
             Die();
+            Data.score += 100;
         }
     }
 
     void Die()
     {
-        Debug.Log("Enemy Die");
+        isInvulnerable = true;
         anim.SetBool("isDead", true);
-
-        // GetComponent<Collider2D>().enabled = false;
-        // GetComponent<Boss_run>().enabled = false;
-        Destroy (this.gameObject, 2f);
+        Destroy (GetComponent<Rigidbody2D>());
+        GetComponent<BoxCollider2D>().enabled = false ;
         this.enabled = false;
 
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
-
-    // private void OnCollisionStay2D(Collision2D collision)
-	// {
-	//         // Kondisi ketika menyentuh tanah
-    //         // anim.SetTrigger("Boss_Idle");
-	// }
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-	// {
-	// 	// if (Input.GetKeyDown(KeyCode.N))
-	// 	// if (collision.collider.gameObject.CompareTag("Player"))
-	// 	// {
-    //     //     Debug.Log("Damage");
-	// 	// 	anim.SetTrigger("Boss_Hurt");
-	// 	// }
-
-	// }
 }

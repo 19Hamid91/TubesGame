@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Traps
   - Boss
+  - Gem
+  - Fall
+  - Gate
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
-  - 
+  - Gem
+  - Gate
   - 
   - 
   - 
