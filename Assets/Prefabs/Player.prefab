@@ -161,6 +161,7 @@ MonoBehaviour:
   isInvulnerable: 0
   healthbar: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: 7608a883a8bb5584986743a3ae5329cd, type: 3}
+  gameover: {fileID: 0}
 --- !u!50 &429571506
 Rigidbody2D:
   serializedVersion: 4
@@ -199,7 +200,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.69, y: 0.44}
+    oldSize: {x: 0.18, y: 0.33}
     newSize: {x: 0.69, y: 0.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -226,6 +227,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0.97
-  attackDamage: 400
+  attackDamage: 40
   cooldown: 0
   timer: 0

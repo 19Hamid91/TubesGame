@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
 		public AudioClip soundEffect;
 		private AudioSource sound;
+
+		public GameObject gameover;
 	    
 	    // Use this for initialization
 	    private void Start()
@@ -174,5 +176,6 @@ public class PlayerController : MonoBehaviour
 			GetComponent<Player_attack>().enabled = false;
 			this.enabled = false;
 			Debug.Log("Player Die");
+			gameover.SetActive(true);
 		}
 }

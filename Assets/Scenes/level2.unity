@@ -6702,6 +6702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5849388414828768140, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5849388415299367017, guid: 34f339ec2a729e547a76900618a5e1b5, type: 3}
       propertyPath: anim
       value: 
