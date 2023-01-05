@@ -20,8 +20,8 @@ public class FollowTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int i = SceneManager.GetActiveScene().buildIndex;
-        if(i == 0)
+        string i = SceneManager.GetActiveScene().name;
+        if(i == "Level1")
         {
             maxPosition = 320f;
         }

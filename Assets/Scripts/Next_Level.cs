@@ -18,20 +18,21 @@ public class Next_Level : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetBool("isOpen", false);
         text.enabled = false;
-        scene = SceneManager.GetActiveScene().name;
-        if(scene == "Level1")
-        {
-            minimum = Data.min_gem_1;
-        }
-        if(scene == "Level2")
-        {
-            minimum = Data.min_gem_2;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        scene = SceneManager.GetActiveScene().name;
+        if(scene == "Level1")
+        {
+            minimum = Data.min_gem_1;
+        }
+        else
+        {
+            minimum = Data.min_gem_2;
+        }
+        // Debug.Log(minimum);
         if ( Vector3.Distance(transform.position, target.position) < range )
         {
             if(Data.gem >= minimum)
@@ -61,6 +62,8 @@ public class Next_Level : MonoBehaviour
     public void NextLevel()
     {
         anim.SetBool("isOpen", true);
+        Data.lastScore = Data.score;
+        Data.lastGem = Data.gem;
         StartCoroutine(Next());
     }
 

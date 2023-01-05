@@ -8,6 +8,8 @@ public class Data
     public static int gem;
     public static int min_gem_1 = 15;
     public static int min_gem_2 = 20;
+    public static int lastScore = 0;
+    public static int lastGem = 0;
 
     // Start is called before the first frame update
     void Start()

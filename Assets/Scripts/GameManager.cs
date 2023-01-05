@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Data.score = Data.lastScore;
+        Data.gem = Data.lastGem;
     }
 
     public void GoToMainMenu()
