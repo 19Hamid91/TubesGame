@@ -40,27 +40,42 @@ public class PlayerController : MonoBehaviour
 	    // Update is called once per frame
 	    void Update()
 	    {
-	        if (Input.GetKeyDown(KeyCode.A))
-	        {
-	            MoveLeft();
-	        }
-	        if (Input.GetKeyDown(KeyCode.D))
-	        {
-	            MoveRight();
-	        }
-	        if (Input.GetKeyDown(KeyCode.Space))
-	        {
-	            Jump();
-	        }
-	        if (Input.GetKeyUp(KeyCode.D))
-	        {
-	            Idle();
-	        }
-	        if (Input.GetKeyUp(KeyCode.A))
-	        {
-	            Idle();
-	        }
-	        Move();
+			if (Input.GetKeyDown(KeyCode.Escape))
+		    {
+		        if(Data.paused)
+		        {
+		            GetComponent<PauseMenu>().Resume();
+		        }
+		        else
+		        {
+		            GetComponent<PauseMenu>().Pause();
+		        }
+		    }
+
+			if(!Data.paused)
+			{
+				if (Input.GetKeyDown(KeyCode.A))
+				{
+					MoveLeft();
+				}
+				if (Input.GetKeyDown(KeyCode.D))
+				{
+					MoveRight();
+				}
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					Jump();
+				}
+				if (Input.GetKeyUp(KeyCode.D))
+				{
+					Idle();
+				}
+				if (Input.GetKeyUp(KeyCode.A))
+				{
+					Idle();
+				}
+				Move();
+			}
 			if(currentHealth <= 0)
 			{
 				Die();
