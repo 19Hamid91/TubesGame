@@ -9,6 +9,7 @@ TagManager:
   - Gem
   - Fall
   - Gate
+  - Enemy
   layers:
   - Default
   - TransparentFX

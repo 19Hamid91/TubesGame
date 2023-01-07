@@ -18,4 +18,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+        Data.score = 0;
+        Data.gem = 0;
+        Data.lastScore = 0;
+        Data.lastScore = 0;
+        Data.lastGem = 0;
+        Data.paused = false;
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -17,6 +17,9 @@ public class Data
     {
         score = 0;
         gem = 0;
+        lastScore = 0;
+        lastScore = 0;
+        lastGem = 0;
         paused = false;
     }
 

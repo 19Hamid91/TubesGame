@@ -42,12 +42,24 @@ public class Player_attack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if(enemy.GetComponent<BossController>().isInvulnerable)
-            {
-                return;
+            // if(GetComponent<BossController>())
+            // {
+                if(enemy.GetComponent<BossController>().isInvulnerable)
+                {
+                    return;
+                }
+                enemy.GetComponent<BossController>().TakeDamage(attackDamage);
             }
-            enemy.GetComponent<BossController>().TakeDamage(attackDamage);
-        }
+        //     if(GetComponent<EnemyController>())
+        //     {
+        //         Debug.Log(GetComponent<EnemyController>());
+        //         if(enemy.GetComponent<EnemyController>().isInvulnerable)
+        //         {
+        //             return;
+        //         }
+        //         enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
+        //     }
+        // }
     }
 
     void OnDrawGizmosSelected()
