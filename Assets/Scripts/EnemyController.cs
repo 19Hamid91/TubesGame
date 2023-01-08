@@ -4,62 +4,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public Animator anim;
+    public Transform player;
+
     public bool isFlipped = false;
     public int maxHealth = 100;
     public int currentHealth;
 
-    public float speed = 2.5f;
-	public float attackRange = 3f;
-	public int attackDamage = 10;
-
     public bool isInvulnerable = false;
-    public float cooldown;
-	public float timer;
-
-    public Animator anim;
-    public Transform player;
-
-	Rigidbody2D rb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentHealth = maxHealth;
-		rb = GetComponent<Rigidbody2D>();
-		cooldown = 1;
-		timer = cooldown;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!anim.GetBool("EnemyIsDead"))
-		{
-			if(player.GetComponent<PlayerController>().isInvulnerable)
-			{
-				return;
-			}
-			LookAtPlayer();
-			Vector2 target = new Vector2(player.position.x, rb.position.y);
-			Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-			rb.MovePosition(newPos);
-
-			if (Vector2.Distance(player.position, rb.position) <= attackRange)
-			{
-				if(player.GetComponent<PlayerController>().isInvulnerable)
-				{
-					return;
-				}
-				timer -= Time.deltaTime;
-				if(timer < 0 ) 
-				{
-					anim.SetTrigger("Enemy_Attack");
-					player.GetComponent<PlayerController>().TakeDamage(attackDamage);
-					timer = cooldown;
-				}
-			}
-		}
-		return;
-    }
 
     public void LookAtPlayer()
 	{
@@ -79,6 +31,12 @@ public class EnemyController : MonoBehaviour
 			isFlipped = true;
 		}
 	}
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(int damage)
     {
