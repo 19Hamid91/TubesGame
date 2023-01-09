@@ -10,6 +10,7 @@ public class Next_Level : MonoBehaviour
     public Transform target;
     public float range;
     public Text text;
+    public GameObject boss;
     string scene;
     int minimum;
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class Next_Level : MonoBehaviour
         // Debug.Log(minimum);
         if ( Vector3.Distance(transform.position, target.position) < range )
         {
-            if(Data.gem >= minimum)
+            if(Data.gem >= minimum || boss.GetComponent<BossController>().isInvulnerable == true)
             {
                 text.enabled = true;
                 if (Input.GetKeyDown(KeyCode.N))
