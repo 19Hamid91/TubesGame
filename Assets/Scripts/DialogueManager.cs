@@ -12,11 +12,14 @@ public class DialogueManager : MonoBehaviour {
 	public Animator animator;
 	public Animator animator2;
 
+	public Dialogue dialogue;
+
 	private Queue<string> sentences;
 
 	// Use this for initialization
 	void Start () {
 		sentences = new Queue<string>();
+		StartDialogue(dialogue);
 	}
 
 	public void StartDialogue (Dialogue dialogue)
