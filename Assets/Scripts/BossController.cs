@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -41,6 +42,14 @@ public class BossController : MonoBehaviour
         healthbar.SetMaxHealth(maxHealth);
     }
 
+    void Update() 
+    {
+        if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            BGmusic.instance.GetComponent<AudioSource>().Pause();
+        }    
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -58,9 +67,16 @@ public class BossController : MonoBehaviour
     {
         isInvulnerable = true;
         anim.SetBool("isDead", true);
+        GetComponent<AudioSource>().Pause();
         Destroy (GetComponent<Rigidbody2D>());
         GetComponent<BoxCollider2D>().enabled = false ;
         this.enabled = false;
+        StartCoroutine(Next());
 
     }
+    IEnumerator Next()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }  
 }
