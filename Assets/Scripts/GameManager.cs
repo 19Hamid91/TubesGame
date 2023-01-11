@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
+        BGmusic.instance.GetComponent<AudioSource>().Play();
     }
 
     public void StartGame()
